@@ -11,7 +11,9 @@ export class StudentsService {
   ) {}
 
   findAll() {
-    return this.studentsRepository.find();
+    return this.studentsRepository.find({
+      relations: ['group'],
+    });
   }
 
   create(studentData: Partial<Student>) {

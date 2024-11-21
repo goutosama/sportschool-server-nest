@@ -11,9 +11,6 @@ export class Group {
   @Column()
   name: string;
 
-  @Column({ type: 'date' })
-  dateOfBirth: Date;
-
   @OneToMany(() => Student, (student) => student.group)
   students: Student[];
 
