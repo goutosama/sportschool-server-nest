@@ -11,7 +11,9 @@ export class LessonsService {
   ) {}
 
   findAll() {
-    return this.lessonsRepository.find();
+    return this.lessonsRepository.find({
+      relations: ['group']
+    });
   }
 
   create(LessonData: Partial<Lesson>) {

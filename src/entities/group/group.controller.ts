@@ -1,6 +1,15 @@
-import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Put,
+  Delete,
+  Body,
+  Param,
+} from '@nestjs/common';
 import { GroupsService } from './group.service';
 import { Group } from './group.entity';
+import { UpdateGroupDto } from './updateGroup.dto';
 
 @Controller('groups')
 export class GroupsController {
@@ -11,13 +20,26 @@ export class GroupsController {
     return this.groupsService.findAll();
   }
 
+  @Get(':id')
+  findOne(@Param('id') id: number) {
+    return this.groupsService.findOne(id);
+  }
+
+  @Get('/schedule/:id')
+  getSchedule(@Param('id') id: number) {
+    return this.groupsService.schedule(id);
+  }
+
   @Post()
   create(@Body() groupData: Partial<Group>) {
     return this.groupsService.create(groupData);
   }
 
   @Put(':id')
-  update(@Param('id') id: number, @Body() groupData: Partial<Group>) {
+  async updateGroup(
+    @Param('id') id: number,
+    @Body() groupData: UpdateGroupDto,
+  ) {
     return this.groupsService.update(id, groupData);
   }
 
