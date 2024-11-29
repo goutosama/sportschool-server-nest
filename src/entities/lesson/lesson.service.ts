@@ -12,9 +12,42 @@ export class LessonsService {
 
   findAll() {
     return this.lessonsRepository.find({
-      relations: ['group']
+      relations: ['group', 'teacher']
     });
   }
+
+  getTeacherSchedule(id: number){
+    return this.lessonsRepository.find({
+      where: {
+        teacher: {
+          id: id
+        }
+      },
+      relations: ['group', 'teacher']
+    })
+  }
+
+  getGroupSchedule(id: number){
+    return this.lessonsRepository.find({
+      where: {
+        group: {
+          id: id
+        }
+      },
+      relations: ['group', 'teacher']
+    })
+  }
+
+   getHallSchedule(id: number){
+    return "Not implemented"/*this.lessonsRepository.find({
+      where: {
+        group: {
+          id: id
+        }
+      },
+      relations: ['group', 'teacher']
+    }) */
+  } 
 
   create(LessonData: Partial<Lesson>) {
     const Lesson = this.lessonsRepository.create(LessonData);

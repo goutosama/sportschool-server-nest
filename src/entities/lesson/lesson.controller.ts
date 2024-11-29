@@ -11,6 +11,21 @@ export class LessonsController {
     return this.lessonsService.findAll();
   }
 
+  @Get('/teacher/:id')
+  findTeacherSchedule(@Param('id') id: number) {
+    return this.lessonsService.getTeacherSchedule(id);
+  }
+
+  @Get('/group/:id')
+  findGroupSchedule(@Param('id') id: number) {
+    return this.lessonsService.getGroupSchedule(id);
+  }
+
+  @Get('/hall/:id')
+  findHallSchedule(@Param('id') id: number) {
+    return this.lessonsService.getHallSchedule(id);
+  }
+
   @Post()
   create(@Body() LessonData: Partial<Lesson>) {
     return this.lessonsService.create(LessonData);

@@ -1,6 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { Group } from '../group/group.entity';
 import { Teacher } from '../teacher/teacher.entity';
+import { Hall } from '../hall/hall.entity';
 
 @Entity()
 export class Lesson{
@@ -10,7 +11,7 @@ export class Lesson{
   @Column()
   name: string;
 
-  @Column()  // From 1 to 7 for convineince
+  @Column('int8')  // From 1 to 7 for convineince
   weekDay: number;
 
   @Column('time')
@@ -18,6 +19,9 @@ export class Lesson{
 
   @Column()
   duration: number;
+
+  @ManyToOne(() => Hall, (hall) => hall.lessons)
+  hall: Hall;
 
   @ManyToOne(() => Group, (group) => group.lessons)
   group: Group;

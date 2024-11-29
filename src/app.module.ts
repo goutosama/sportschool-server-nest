@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 import { GroupsModule } from './entities/group/group.module';
 import { StudentsModule } from './entities/student/student.module';
 import { LessonsModule } from './entities/lesson/lesson.module';
+import { HallsModule } from './entities/hall/hall.module';
 
 @Module({
   imports: [
@@ -18,7 +19,8 @@ import { LessonsModule } from './entities/lesson/lesson.module';
   TeachersModule,
   GroupsModule,
   StudentsModule,
-  LessonsModule
+  LessonsModule,
+  HallsModule
   ],
   controllers: [AppController],
   providers: [AppService],

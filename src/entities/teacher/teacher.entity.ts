@@ -12,6 +12,9 @@ export class Teacher {
   @Column()
   lastName: string;
 
+  @Column({nullable: true})
+  patronym: string;
+
   @Column({ type: 'date' })
   dateOfBirth: Date;
 
