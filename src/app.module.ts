@@ -7,6 +7,9 @@ import { GroupsModule } from './entities/group/group.module';
 import { StudentsModule } from './entities/student/student.module';
 import { LessonsModule } from './entities/lesson/lesson.module';
 import { HallsModule } from './entities/hall/hall.module';
+import { InventoryModule } from './entities/inventory/inventory.module';
+import { LessonInventory } from './entities/lessonInventory/lessonInventory.entity';
+import { LessonInventoryModule } from './entities/lessonInventory/lessonInventory.module';
 
 @Module({
   imports: [
@@ -20,7 +23,9 @@ import { HallsModule } from './entities/hall/hall.module';
   GroupsModule,
   StudentsModule,
   LessonsModule,
-  HallsModule
+  HallsModule,
+  InventoryModule,
+  LessonInventoryModule
   ],
   controllers: [AppController],
   providers: [AppService],

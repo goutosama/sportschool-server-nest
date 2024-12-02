@@ -12,7 +12,9 @@ export class HallsService {
   ) {}
 
   findAll() {
-    return this.hallsRepository.find();
+    return this.hallsRepository.find({
+      relations: ['lessons']
+    });
   }
 
   findOne(id: number) {

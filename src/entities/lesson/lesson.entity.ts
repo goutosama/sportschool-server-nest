@@ -1,7 +1,9 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, ManyToMany } from 'typeorm';
 import { Group } from '../group/group.entity';
 import { Teacher } from '../teacher/teacher.entity';
 import { Hall } from '../hall/hall.entity';
+import { OneToMany } from 'typeorm';
+import { LessonInventory } from '../lessonInventory/lessonInventory.entity';
 
 @Entity()
 export class Lesson{
@@ -28,4 +30,7 @@ export class Lesson{
 
   @ManyToOne(() => Teacher, (teacher) => teacher.lessons)
   teacher: Teacher;
+
+  @OneToMany(() => LessonInventory, (lessonInventory) => lessonInventory.lesson)
+  lessonInventories: LessonInventory[];
 }

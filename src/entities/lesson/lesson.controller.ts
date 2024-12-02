@@ -27,8 +27,8 @@ export class LessonsController {
   }
 
   @Post()
-  create(@Body() LessonData: Partial<Lesson>) {
-    return this.lessonsService.create(LessonData);
+  create(@Body('lesson') LessonData: Partial<Lesson>, @Body('inventory') invAssign:{ inventoryId: number; quantity: number }[]) {
+    return this.lessonsService.create(LessonData, invAssign);
   }
 
   @Put(':id')
