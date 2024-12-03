@@ -18,10 +18,17 @@ export class LessonsService {
 
   findAll() {
     return this.lessonsRepository.find({
-      relations: ['group', 'teacher', 'hall', 'lessonInventories'],
+      relations: {
+        group: true,
+        teacher: true,
+        hall: true,
+        lessonInventories: {
+          inventoryItem: true
+        } 
+        },
     });
   }
-
+//'group', 'teacher', 'hall', 'lessonInventories'
   getTeacherSchedule(id: number) {
     return this.lessonsRepository.find({
       where: {
